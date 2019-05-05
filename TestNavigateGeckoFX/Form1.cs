@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gecko;
+using System.Collections.Specialized;
 
 namespace TestNavigateGeckoFX
 {
@@ -34,7 +35,23 @@ namespace TestNavigateGeckoFX
 
         async private void GoTest()
         {
-            for(int i=0; i <10;i++)
+            StringCollection sc = new StringCollection();
+            string line;
+            System.IO.StreamReader file = new System.IO.StreamReader("groups.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                sc.Add(line);
+            }
+            file.Close();
+
+            foreach(string id in sc)
+            {
+                geckoWebBrowser.Navigate("https://vk.com/club"+id);
+                await Task.Delay(5000);
+            }
+
+            /*
+            for (int i=0; i <3;i++)
             {
                 geckoWebBrowser.Navigate("www.google.com");
                 await Task.Delay(5000);
@@ -47,7 +64,7 @@ namespace TestNavigateGeckoFX
                 geckoWebBrowser.Navigate("live.com");
                 await Task.Delay(5000);
                 geckoWebBrowser.Navigate("amazon.com");
-            }
+            }*/
             geckoWebBrowser.Navigate("about:memory");
             await Task.Delay(999999000);
         }
