@@ -35,23 +35,7 @@ namespace TestNavigateGeckoFX
 
         async private void GoTest()
         {
-            StringCollection sc = new StringCollection();
-            string line;
-            System.IO.StreamReader file = new System.IO.StreamReader("groups.txt");
-            while ((line = file.ReadLine()) != null)
-            {
-                sc.Add(line);
-            }
-            file.Close();
-
-            foreach(string id in sc)
-            {
-                geckoWebBrowser.Navigate("https://vk.com/club"+id);
-                await Task.Delay(5000);
-            }
-
-            /*
-            for (int i=0; i <3;i++)
+            for (int i=0; i <300;i++)
             {
                 geckoWebBrowser.Navigate("www.google.com");
                 await Task.Delay(5000);
@@ -64,7 +48,32 @@ namespace TestNavigateGeckoFX
                 geckoWebBrowser.Navigate("live.com");
                 await Task.Delay(5000);
                 geckoWebBrowser.Navigate("amazon.com");
-            }*/
+            }
+
+            /*
+            StringCollection sc = new StringCollection();
+            string line;
+            System.IO.StreamReader file = new System.IO.StreamReader("groups.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                sc.Add(line);
+            }
+            file.Close();
+            
+            foreach(string id in sc)
+            {
+                try
+                {
+                    geckoWebBrowser.Navigate("https://vk.com/club" + id);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                
+                await Task.Delay(5000);
+            }
+            */
             geckoWebBrowser.Navigate("about:memory");
             await Task.Delay(999999000);
         }
