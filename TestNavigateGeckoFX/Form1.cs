@@ -34,6 +34,7 @@ namespace TestNavigateGeckoFX
 
         async private void GoTest()
         {
+            //1
             for (int i=0; i <300;i++)
             {
                 geckoWebBrowser.Navigate("www.google.com");
@@ -49,7 +50,42 @@ namespace TestNavigateGeckoFX
                 geckoWebBrowser.Navigate("amazon.com");
             }
 
-            /*
+            //2
+            for (int i = 0; i < 300; i++)
+            {
+                geckoWebBrowser.Navigate("www.google.com");
+                await Task.Delay(5000);
+            }
+
+            //3
+            for (int i = 0; i < 300; i++)
+            {
+                geckoWebBrowser.Navigate("www.google.com");
+                await Task.Delay(5000);
+                geckoWebBrowser.Stop();
+
+                geckoWebBrowser.Navigate("www.facebok.com");
+                await Task.Delay(5000);
+                geckoWebBrowser.Stop();
+
+                geckoWebBrowser.Navigate("youtube.com");
+                await Task.Delay(5000);
+                geckoWebBrowser.Stop();
+
+                geckoWebBrowser.Navigate("baidu.com");
+                await Task.Delay(5000);
+                geckoWebBrowser.Stop();
+
+                geckoWebBrowser.Navigate("live.com");
+                await Task.Delay(5000);
+                geckoWebBrowser.Stop();
+
+                geckoWebBrowser.Navigate("amazon.com");
+                await Task.Delay(5000);
+                geckoWebBrowser.Stop();
+            }
+
+            //4
             StringCollection sc = new StringCollection();
             string line;
             System.IO.StreamReader file = new System.IO.StreamReader("groups.txt");
@@ -72,7 +108,7 @@ namespace TestNavigateGeckoFX
                 
                 await Task.Delay(5000);
             }
-            */
+            
             geckoWebBrowser.Navigate("about:memory");
             await Task.Delay(999999000);
         }
