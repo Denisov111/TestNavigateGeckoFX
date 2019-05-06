@@ -29,7 +29,6 @@ namespace TestNavigateGeckoFX
                 Height = this.Height
             };
             Controls.Add(geckoWebBrowser);
-            geckoWebBrowser.Navigate("www.google.com");
             GoTest();
         }
 
